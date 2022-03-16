@@ -6,7 +6,7 @@ const cekHariKerja = (day) => {
         setTimeout(() => {
             const dataDay = ['senin', 'selasa', 'rabu', 'kamis', 'jumat']
             let cek = dataDay.find((item) => {
-                return item === day.toLowerCase()
+                return item === day
             })
             if (cek) {
                 resolve(cek)
@@ -18,21 +18,25 @@ const cekHariKerja = (day) => {
 }
 
 //handle error dgn thencatch
-cekHariKerja('selasaaa')
-    .then((result) => {
-        console.log(result);
-    })
-    .catch((err) => {
-        console.log(err.message);
-    });
 
+// cekHariKerja('selasaaa'.toLowerCase())
+//     .then((result) => {
+//         console.log(result);
+//     })
+//     .catch((err) => {
+//         console.log(err.message);
+//     });
+
+
+//handle error dgn trycatch
 //function to receive parameter from await
+
 const tampilkanData = (data) => {
     console.log(data);
 }
 const handle = async () => {
     try {
-        const tampil = await cekHariKerja('senin')
+        const tampil = await cekHariKerja('senin'.toLowerCase())
         tampilkanData(tampil)
     } catch (error) {
         console.log(error.message);
